@@ -45,7 +45,7 @@ Basic Chat
    └─> Secure File-Sharing Chat (Encrypted + GUI)
 
 ---
-
+```
 ## How to Use
 
 ### Server side

@@ -7,8 +7,8 @@ from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
-HOST = "localhost"
-PORT = 12345
+HOST = "0.0.0.0"
+PORT = 5555
 CHUNK_SIZE = 4096
 
 # --- framing helpers ---

@@ -1,0 +1,5 @@
+# Core crypto library
+cryptography==42.0.5
+
+# For packaging (optional, only if rebuilding exe files)
+pyinstaller==6.11.1

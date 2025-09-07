@@ -1,83 +1,38 @@
-# 📂 Project Files
+# 💬 Chat Application
 
-This repository contains multiple stages of a chat system, each with its own server–client pair. The system has been progressively extended from basic chat to secure multi-client communication, and finally to file-sharing functionality.
-
----
-
-## 1. Basic Relay Chat
-
-### `server.py`
-A simple multi-client chat server.  
-- Accepts multiple client connections.  
-- Relays messages from any client to all others (broadcast).  
-- Messages are transmitted in **plaintext** (no encryption).  
-
-### `client.py`
-Connects to the basic server.  
-- Sends user input directly to the server.  
-- Receives and prints messages broadcast by the server.  
+A secure end-to-end encrypted (E2EE) chat system with multi-client support, file sharing, and GUI. Built in progressive stages, the project demonstrates the evolution from a simple plaintext chat server to a secure, encrypted, multi-client system with file transfer capabilities.
 
 ---
 
-## 2. Secure Single-Client Chat
+## 📂 Project Files
 
-### `enserver.py`
-A secure chat server supporting **one client**.  
-- Uses **ECDH (Elliptic Curve Diffie–Hellman)** for key exchange.  
-- Derives a shared **AES session key**.  
-- Encrypts all communication with **AES-CFB**.  
+### 1. Basic Relay Chat
+- **`server.py`** – Multi-client relay server (plaintext).  
+- **`client.py`** – Basic client that connects and exchanges unencrypted messages.
 
-### `enclient.py`
-Companion client for `enserver.py`.  
-- Performs handshake with the server.  
-- Exchanges encrypted messages securely.  
+### 2. Secure Single-Client Chat
+- **`enserver.py`** – Secure server (one client) using **ECDH + AES-CFB**.  
+- **`enclient.py`** – Secure client for `enserver.py`.
 
----
+### 3. Secure Multi-Client Chat
+- **`mulenserver.py`** – Extends secure server for **multiple clients**, each with its own AES key.  
+- **`milenclient.py`** – Secure multi-client companion.
 
-## 3. Secure Multi-Client Chat
+### 4. File-Sharing Chat (Unencrypted)
+- **`fileserver.py`** – Adds file-sharing, but messages/files are **plaintext**.  
+- **`fileclient.py`** – Companion for unencrypted file-sharing.
 
-### `mulenserver.py`
-Extension of `enserver.py` for **multiple clients**.  
-- Each client establishes its **own AES key** with the server.  
-- Server decrypts incoming messages from a client and re-encrypts them for every other client.  
-- Ensures all network traffic remains encrypted.  
+### 5. Secure File-Sharing Chat (Encrypted)
+- **`enfileserver.py`** – Secure server with **E2EE chat + file sharing**.  
+- **`enfileclient.py`** – Secure GUI client with encrypted chat + file transfers.  
 
-### `milenclient.py`
-Companion client for `mulenserver.py`.  
-- Handles encrypted sending and receiving for multiple participants.  
 
----
-
-## 4. File-Sharing Chat (Unencrypted)
-
-### `fileserver.py`
-Extends `server.py` with **file-sharing capability**.  
-- Supports multiple clients.  
-- Broadcasts messages as well as shared files.  
-- **Files are transmitted in plaintext** (no encryption).  
-
-### `fileclient.py`
-Companion client for `fileserver.py`.  
-- Can send and receive both chat messages and files.  
-
----
-
-## 5. Secure File-Sharing Chat (Encrypted)
-
-### `enfileserver.py`
-Extends `enserver.py` for **secure file transfer**.  
-- Uses **ECDH + AES-CFB** for encryption.  
-- Supports file sharing alongside messages.  
-- Ensures all traffic, including files, is encrypted.  
-
-### `enfileclient.py`
-Companion client for `enfileserver.py`.  
-- Connects securely and handles encrypted chat and file transfers.  
+- **`requirements.txt`** – Python dependencies for running/building the project.  
+- **`howItWorks.md`** – Explanation of encryption, handshake, and file-sharing workflow.
 
 ---
 
 ## 🔗 Project Progression
-
 ```text
 Basic Chat
    │
@@ -87,4 +42,24 @@ Basic Chat
    │
    ├─> File-Sharing Chat (Unencrypted)
    │
-   └─> Secure File-Sharing Chat (Encrypted)
+   └─> Secure File-Sharing Chat (Encrypted + GUI)
+
+---
+
+## How to Use
+
+### Server side
+1.Install the requirements given in the requirements.txt 
+2.Run the enfileserver.py in the server Device
+
+
+### Client side
+1.Get the server ip 
+2.Modify the host='server-ip'
+3.Run this command to generate an .exe file
+```bash
+pyinstaller --onefile enfileclient.py
+```
+Just the copy the .exe file from the dict directory and use it any client device you want.
+
+

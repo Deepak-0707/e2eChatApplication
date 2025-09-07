@@ -1,3 +1,4 @@
+
 # 💬 Chat Application
 
 A secure end-to-end encrypted (E2EE) chat system with multi-client support, file sharing, and GUI. Built in progressive stages, the project demonstrates the evolution from a simple plaintext chat server to a secure, encrypted, multi-client system with file transfer capabilities.
@@ -50,12 +51,15 @@ Basic Chat
 
 ### Server side
 1.Install the requirements given in the requirements.txt 
+
 2.Run the enfileserver.py in the server Device
 
 
 ### Client side
 1.Get the server ip 
+
 2.Modify the host='server-ip'
+
 3.Run this command to generate an .exe file
 ```bash
 pyinstaller --onefile enfileclient.py
